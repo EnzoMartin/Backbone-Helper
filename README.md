@@ -12,7 +12,7 @@ There are several ways to use this, the simples is doing `BB.get({view:'your-vie
 Full example usage:
 
 ```javascript
-var view = BB.get({
+var foo = BB.get({
 	view: {
 		name: 'view-name',
 		reset: true, // Delete existing and create new instance if found
@@ -30,9 +30,9 @@ var view = BB.get({
 	}
 });
 
-view.collection.fetch();
-view.model.fetch();
-view.render();
+foo.collection.fetch();
+foo.model.fetch();
+foo.render();
 ```
 
 ## Todo
