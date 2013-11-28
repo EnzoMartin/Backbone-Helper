@@ -14,19 +14,19 @@ Full example usage:
 ```javascript
 var view = BB.get({
 	view: {
-			name: 'view-name',
-			reset: true, // Delete existing and create new instance if found
-			options: {} // Set any number of view parameters like initialize, el, tagName, etc
+		name: 'view-name',
+		reset: true, // Delete existing and create new instance if found
+		options: {} // Set any number of view parameters like initialize, el, tagName, etc
 	},
 	model: {
-			name: 'model-name',
-			reset: true, // Reset the existing model instance
-			data: {}, // Set model initial data
-			options: {} // Set any number of model parameters like attributeId, initialize, etc
+		name: 'model-name',
+		reset: true, // Reset the existing model instance
+		data: {}, // Set model initial data
+		options: {} // Set any number of model parameters like attributeId, initialize, etc
 	},
 	collection: {
-			name: 'collection-name',
-			reset: true // Reset the existing instance if found
+		name: 'collection-name',
+		reset: true // Reset the existing instance if found
 	}
 });
 
