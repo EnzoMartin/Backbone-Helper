@@ -37,4 +37,3 @@ foo.render();
 
 ## Todo
 - Add some test cases
-- Add support for RequireJS
