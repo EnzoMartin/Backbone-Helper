@@ -1,0 +1,14 @@
+{
+    "name" : "backbone-helper",
+    "version" : "1.0.0",
+    "description" : "Handles your view/model/collection instantiations for you",
+    "keywords" : ["backbone", "model", "view"],
+    "repo" : "EnzoMartin78/Backbone-Helper",
+    "dependencies" : {
+        "jashkenas/underscore" : "*",
+        "jashkenas/backbone" : "*"
+    },
+    "main" : "backbone-helper.js",
+    "scripts" : ["backbone-helper.js"],
+    "license" : "MIT"
+}
