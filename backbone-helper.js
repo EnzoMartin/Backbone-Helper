@@ -1,6 +1,6 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['underscore', 'backbone', 'exports'], function (Backbone, _, exports) {
+        define(['backbone', 'underscore', 'exports'], function (Backbone, _, exports) {
             root.Backbone = factory(root, exports, Backbone, _);
         });
     } else if (typeof exports !== 'undefined') {
@@ -86,6 +86,7 @@
                 },this));
             }
         } else {
+            console.trace();
             throw new Error('Definition not found: ' + name +'. Did you add it to the BL.backbone.' + item + '_definitions window object with the extend function?');
         }
         return instance;
