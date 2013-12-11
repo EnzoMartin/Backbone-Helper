@@ -1,12 +1,12 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['backbone', 'underscore', 'exports'], function (Backbone, _, exports) {
-            root.BB = factory(root, exports, Backbone, _);
+            return factory(root, exports, Backbone, _);
         });
     } else if (typeof exports !== 'undefined') {
         var Backbone = require('backbone');
         var _ = require('underscore');
-        factory(root, exports, Backbone, _);
+        module.exports = factory(root, exports, Backbone, _);
     } else {
         root.BB = factory(root, {}, root.Backbone, root._);
     }
@@ -87,7 +87,7 @@
             }
         } else {
             console.trace();
-            throw new Error('Definition not found: ' + name +'. Did you add it to the BL.backbone.' + item + '_definitions window object with the extend function?');
+            throw new Error(item + ' definition not found: ' + name +'. Did you add it to the BL.backbone.' + item + '_definitions window object with the extend function?');
         }
         return instance;
     }
