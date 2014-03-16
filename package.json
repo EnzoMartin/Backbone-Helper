@@ -1,7 +1,7 @@
 {
     "name": "backbone-helper",
     "description" : "Handles your view/model/collection instantiations for you",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "keywords": ["backbone", "model", "view"],
     "repository": {
