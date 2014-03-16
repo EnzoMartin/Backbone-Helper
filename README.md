@@ -6,7 +6,7 @@ Small helper library for Backbone meant to keep you from memory leaking. It work
 ## How to use
 
 
-There are several ways to use this, the simples is doing `BB.get({view:'your-view-name'})`, you can replace `view` with `model` or `collection`. Additionally you can grab a view with a model and/or collection by doing `BB.get({view:'your-view-name',model:'your-model-name'})`, this will set up the view's model property to reference the specified model.
+There are several ways to use this, the simplest is doing `BB.get({view:'your-view-name'})`, you can replace `view` with `model` or `collection`. Additionally you can grab a view with a model and/or collection by doing `BB.get({view:'your-view-name',model:'your-model-name'})`, this will set up the view's model property to reference the specified model.
 
 
 Full example usage:
