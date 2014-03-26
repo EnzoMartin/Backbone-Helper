@@ -143,15 +143,17 @@
     BB.create_view = function(view_data,model_data,collection_data){
         var name = view_data.name;
         var view = this.view_definitions[name];
+        var model = model_data && !(model_data instanceof Backbone.Model) ? this.get_model(model_data) : model_data;
+        var collection = collection_data && !(collection_data instanceof Backbone.Collection) ? this.get_collection(collection_data) : collection_data;
+        view = view ? this.view_instances[name] = new view({model: model,collection: collection}) : '';
+
         if(view_data.options){
             for(var option in view_data.options){
                 var value = view_data.options[option];
                 view[option] = value;
             }
         }
-        var model = model_data && !(model_data instanceof Backbone.Model) ? this.get_model(model_data) : model_data;
-        var collection = collection_data && !(collection_data instanceof Backbone.Collection) ? this.get_collection(collection_data) : collection_data;
-        view = view ? this.view_instances[name] = new view({model: model,collection: collection}) : '';
+
         this.view_instances[name].listenTo(this.view_instances[name],'remove',_.bind(function(){
             delete this.view_instances[name]
         },this));

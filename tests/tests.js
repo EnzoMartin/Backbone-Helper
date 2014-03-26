@@ -26,6 +26,17 @@ describe('Get', function() {
             var name = person.get('name');
             should.not.exist(name);
         });
+
+        it('should return a new instance of the "person" model with the attribute "name" as "bar"', function(){
+            var person = BB.get({model:{name:'person',reset:true,data:{name:'bar'}}});
+            var name = person.get('name');
+            name.should.equal('bar');
+        });
+
+        it('should return a new instance of the model and return it with a method called "getBaz"', function(){
+            var person = BB.get({model:{name:'person',reset:true,options:{getBaz:function(){}}}});
+            should.exist(person.getBaz);
+        });
     });
     describe('Collection', function() {
         it('should return the "persons" collection', function(){
@@ -43,6 +54,16 @@ describe('Get', function() {
         it('should reset the collection', function(){
             var persons = BB.get({collection:{name:'persons',reset:true}});
             persons.where({name:'foo'}).length.should.equal(0);
+        });
+
+        it('should reset the collection and return it with a model with an attribute "name" of "bar"', function(){
+            var persons = BB.get({collection:{name:'persons',reset:true,data:{name:'bar'}}});
+            persons.where({name:'bar'}).length.should.equal(1);
+        });
+
+        it('should reset the collection and return it with a method called "getBaz"', function(){
+            var persons = BB.get({collection:{name:'persons',reset:true,options:{getBaz:function(){}}}});
+            should.exist(persons.getBaz);
         });
     });
     describe('View', function() {
@@ -80,6 +101,11 @@ describe('Get', function() {
             var list = BB.get({view:'list'});
             list.name.should.equal('list');
             list.collection.should.be.an.instanceof(Backbone.Collection);
+        });
+
+        it('should reset the view "list" and return it with a method called "getBaz"', function(){
+            var list = BB.get({view:{name:'list',reset:true,options:{getBaz:function(){}}}});
+            should.exist(list.getBaz);
         });
     });
 });
