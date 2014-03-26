@@ -35,5 +35,5 @@ foo.model.fetch();
 foo.render();
 ```
 
-## Todo
-- Add some test cases
+## Tests
+Run `node test.js` or `npm run-script test`
