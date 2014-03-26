@@ -69,25 +69,22 @@
         var defined = typeof definitions[name] !== 'undefined';
         var instance;
         if(defined){
-            instance = this[item + '_instances'][name] = new definitions[name];
+            instance = this[item + '_instances'][name] = new definitions[name](data.data || {});
             if(data.options){
                 for(var option in data.options){
                     var value = data.options[option];
                     instance[option] = value;
                 }
             }
-            if(data.data){
-                instance.set(data.data);
-            }
             instance.name = name;
-            if(item == "model"){
+            if(item == 'model'){
                 this[item + '_instances'][name].listenTo(this[item + '_instances'][name],'destroy',_.bind(function(){
                     delete this[item + '_instances'][name];
                 },this));
             }
         } else {
             console.trace();
-            throw new Error(item + ' definition not found: ' + name +'. Did you add it to the BB.' + item + '_definitions window object with the extend function?');
+            throw new Error(item + ' definition not found: ' + name +'. Did you add it to the BB.' + item + '_definitions object?');
         }
         return instance;
     }
