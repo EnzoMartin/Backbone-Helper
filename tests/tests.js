@@ -43,6 +43,11 @@ describe('Get', function() {
             var persons = BB.get({collection:'persons'});
             persons.should.be.an.instanceof(Backbone.Collection);
         });
+		
+		it('should return the "persons" collection with a length of 0', function(){
+            var persons = BB.get({collection:'persons'});
+            persons.length.should.equal(0);
+        });
 
         it('should add a model to the "persons" collection', function(){
             var persons = BB.get({collection:'persons'});

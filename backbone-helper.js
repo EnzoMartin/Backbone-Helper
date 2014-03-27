@@ -69,7 +69,7 @@
         var defined = typeof definitions[name] !== 'undefined';
         var instance;
         if(defined){
-            instance = this[item + '_instances'][name] = new definitions[name](data.data || {});
+            instance = this[item + '_instances'][name] = new definitions[name](data.data || null);
             if(data.options){
                 for(var option in data.options){
                     var value = data.options[option];
