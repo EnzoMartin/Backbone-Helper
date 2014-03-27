@@ -1,6 +1,3 @@
-Backbone-Helper
-===============
-
 Small helper library for Backbone meant to keep you from memory leaking. It works by handling the instance creation of models/views/collections for you and keeping track of them, preventing you from unintentionally creating multiple instances of them.
 
 ## How to use
