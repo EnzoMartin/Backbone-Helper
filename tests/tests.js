@@ -44,7 +44,7 @@ describe('Get', function() {
             persons.should.be.an.instanceof(Backbone.Collection);
         });
 		
-		it('should return the "persons" collection with a length of 0', function(){
+        it('should return the "persons" collection with a length of 0', function(){
             var persons = BB.get({collection:'persons'});
             persons.length.should.equal(0);
         });
