@@ -78,9 +78,9 @@
             }
             instance.name = name;
             if(item == 'model'){
-                this[item + '_instances'][name].listenTo(this[item + '_instances'][name],'destroy',_.bind(function(){
+                this[item + '_instances'][name].on('destroy',function(){
                     delete this[item + '_instances'][name];
-                },this));
+                },this);
             }
         } else {
             console.trace();
