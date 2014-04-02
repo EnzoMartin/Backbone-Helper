@@ -154,9 +154,9 @@
             }
         }
 
-        this.view_instances[name].listenTo(this.view_instances[name],'remove',_.bind(function(){
+        this.view_instances[name].on('remove',function(){
             delete this.view_instances[name]
-        },this));
+        },this);
         view.name = name;
         return view;
     };
