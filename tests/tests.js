@@ -13,6 +13,11 @@ describe('Get', function() {
             person.should.be.an.instanceof(Backbone.Model);
         });
 
+        it('should have an instance of the "person" model', function(){
+            BB.get({model:'person'});
+            should.exist(BB.model_instances.person);
+        });
+
         it('should set "name" of "person" model to be "foo"', function(){
             var person = BB.get({model:'person'});
             person.set({name:'foo'});
@@ -37,11 +42,23 @@ describe('Get', function() {
             var person = BB.get({model:{name:'person',reset:true,options:{getBaz:function(){}}}});
             should.exist(person.getBaz);
         });
+
+        it('should delete the instance of the model when "model.destroy" is called', function(){
+            var person = BB.get({model:'person'});
+            should.exist(BB.model_instances.person);
+            person.destroy();
+            should.not.exist(BB.model_instances.person);
+        })
     });
     describe('Collection', function() {
         it('should return the "persons" collection', function(){
             var persons = BB.get({collection:'persons'});
             persons.should.be.an.instanceof(Backbone.Collection);
+        });
+
+        it('should have an instance of the "persons" collection', function(){
+            var persons = BB.get({collection:'persons'});
+            should.exist(BB.collection_instances.persons);
         });
 		
         it('should return the "persons" collection with a length of 0', function(){
@@ -75,6 +92,11 @@ describe('Get', function() {
         it('should return the "list" view', function(){
             var list = BB.get({view:'list'});
             list.should.be.an.instanceof(Backbone.View);
+        });
+
+        it('should have an instance of the "list" view', function(){
+            var list = BB.get({view:'list'});
+            should.exist(BB.view_instances.list);
         });
 
         it('should return the "detail" view with the "person" model attached', function(){
@@ -111,6 +133,19 @@ describe('Get', function() {
         it('should reset the view "list" and return it with a method called "getBaz"', function(){
             var list = BB.get({view:{name:'list',reset:true,options:{getBaz:function(){}}}});
             should.exist(list.getBaz);
+        });
+
+        it('should delete the instance of the view when "view.remove" is called', function(){
+            var list = BB.get({view:'list'});
+            should.exist(BB.view_instances.list);
+            list.remove();
+            should.not.exist(BB.view_instances.list);
+        });
+
+        it('should delete the instance of the view but not the model when "view.remove" is called with a model attached', function(){
+            BB.get({view:'list',model:'person'}).remove();
+            should.not.exist(BB.view_instances.list);
+            should.exist(BB.model_instances.person);
         });
     });
 });
