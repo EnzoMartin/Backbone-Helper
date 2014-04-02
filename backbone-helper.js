@@ -197,6 +197,16 @@
         return item;
     };
 
+    /**
+     * Checks if an instance of the given type and name exists and returns true or false
+     * @param type string view|model|collection
+     * @param name string
+     * @returns {boolean}
+     */
+    BB.exists = function(type,name){
+        return typeof this[type + '_instances'][name] !== 'undefined';
+    };
+
     // Upgrading Backbone to fire a remove event when removing a view
     var _super = Backbone.View.prototype.remove;
     Backbone.View.prototype.remove = function(){

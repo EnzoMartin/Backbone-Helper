@@ -149,3 +149,16 @@ describe('Get', function() {
         });
     });
 });
+describe('Exists', function(){
+    it('should return false if a given type and name does not exist as an instance', function(){
+        BB.exists('view','list').should.be.false;
+        BB.exists('model','car').should.be.false;
+        BB.exists('collection','cars').should.be.false;
+    });
+
+    it('should return true if a given type and name exists as an instance', function(){
+        BB.exists('view','detail').should.be.true;
+        BB.exists('model','person').should.be.true;
+        BB.exists('collection','persons').should.be.true;
+    });
+});
