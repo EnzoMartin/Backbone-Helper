@@ -142,6 +142,20 @@ describe('Get', function() {
             should.exist(BB.model_instances.person);
         });
         
+        it('should add the model to an existing view instance that doesn\'t have a model', function(){
+            var view = BB.get({view:{name:'list',reset:true}});
+            should.not.exist(view.model);
+            view = BB.get({view:'list',model:'car'});
+            should.exist(view.model);
+        });
+        
+        it('should add the collection to an existing view instance that doesn\'t have a collection', function(){
+            var view = BB.get({view:{name:'list',reset:true}});
+            should.not.exist(view.collection);
+            view = BB.get({view:'list',collection:'cars'});
+            should.exist(view.collection);
+        });
+        
         it('should change the model of an existing view instance', function(){
             var view = BB.get({view:{name:'list',reset:true},model:'person'});
             view.model.name.should.equal('person');
