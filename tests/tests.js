@@ -105,12 +105,6 @@ describe('Get', function() {
             detail.model.should.be.an.instanceof(Backbone.Model);
         });
 
-        it('should not return the "persons" collection as the view was previously instanciated', function(){
-            var list = BB.get({view:'list',collection:'persons'});
-            list.name.should.equal('list');
-            should.not.exist(list.collection);
-        });
-
         it('should reset and return the "list" view with the "persons" collection attached', function(){
             var list = BB.get({view:{name:'list',reset:true},collection:'persons'});
             list.name.should.equal('list');
@@ -165,12 +159,18 @@ describe('Get', function() {
 });
 describe('Exists', function(){
     it('should return false if a given type and name does not exist as an instance', function(){
+    	BB.get(view:'list').remove();
+    	
         BB.exists('view','list').should.be.false;
-        BB.exists('model','car').should.be.false;
-        BB.exists('collection','cars').should.be.false;
+        BB.exists('model','ship').should.be.false;
+        BB.exists('collection','ships').should.be.false;
     });
 
     it('should return true if a given type and name exists as an instance', function(){
+    	BB.get(view:'detail');
+    	BB.get(model:'person');
+    	BB.get(collection:'persons');
+    	
         BB.exists('view','detail').should.be.true;
         BB.exists('model','person').should.be.true;
         BB.exists('collection','persons').should.be.true;
