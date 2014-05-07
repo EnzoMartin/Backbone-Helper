@@ -41,7 +41,7 @@
         var defined = typeof instances[name] !== 'undefined';
         var instance;
 
-        if(data.reset && defined){
+        if(data.reset === true && defined){
             if(item == "model"){
                 instances[name].destroy();
             } else if (item == "collection"){
