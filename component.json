@@ -1,6 +1,6 @@
 {
     "name" : "backbone-helper",
-    "version" : "1.0.3",
+    "version" : "1.0.30",
     "description" : "Handles your view/model/collection instantiations for you",
     "keywords" : ["backbone", "model", "view"],
     "repo" : "EnzoMartin78/Backbone-Helper",
