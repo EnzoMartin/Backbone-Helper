@@ -132,11 +132,12 @@
 
         var view = views[name];
         if(view){
-            if(model_data){
+            if(model_data && (!view.model || (view.model && view.model.name !== model_data.name))){
                 view.model = this.get_model(model_data);
             }
 
-            if(collection_data){
+            if(collection_data && (!view.collection || (view.collection && view.collection.name !== collection_data.name))){
+                console.log('add collection')
                 view.collection = this.get_collection(collection_data);
             }
         } else {
