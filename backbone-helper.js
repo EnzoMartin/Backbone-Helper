@@ -130,7 +130,20 @@
             views[name].remove();
         }
 
-        return views[name] ? views[name] : this.create_view(view_data,model_data,collection_data);
+        var view = views[name];
+        if(view){
+            if(model_data){
+                view.model = this.get_model(model_data);
+            }
+
+            if(collection_data){
+                view.collection = this.get_collection(collection_data);
+            }
+        } else {
+            view = this.create_view(view_data,model_data,collection_data);
+        }
+
+        return view;
     };
 
     /**
