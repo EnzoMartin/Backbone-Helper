@@ -159,7 +159,7 @@ describe('Get', function() {
 });
 describe('Exists', function(){
     it('should return false if a given type and name does not exist as an instance', function(){
-    	BB.get(view:'list').remove();
+    	BB.get({view:'list'}).remove();
     	
         BB.exists('view','list').should.be.false;
         BB.exists('model','ship').should.be.false;
@@ -167,9 +167,9 @@ describe('Exists', function(){
     });
 
     it('should return true if a given type and name exists as an instance', function(){
-    	BB.get(view:'detail');
-    	BB.get(model:'person');
-    	BB.get(collection:'persons');
+    	BB.get({view:'detail'});
+    	BB.get({model:'person'});
+    	BB.get({collection:'persons'});
     	
         BB.exists('view','detail').should.be.true;
         BB.exists('model','person').should.be.true;
