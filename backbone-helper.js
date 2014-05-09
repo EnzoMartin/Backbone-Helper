@@ -42,9 +42,9 @@
         var instance;
 
         if(data.reset === true && defined){
-            if(item == "model"){
+            if(item === 'model'){
                 instances[name].destroy();
-            } else if (item == "collection"){
+            } else if (item === 'collection'){
                 instances[name].reset();
             }
             delete instances[name];
@@ -72,8 +72,7 @@
             instance = this[item + '_instances'][name] = new definitions[name](data.data || null);
             if(data.options){
                 for(var option in data.options){
-                    var value = data.options[option];
-                    instance[option] = value;
+                    instance[option] = data.options[option];
                 }
             }
             instance.name = name;
@@ -83,7 +82,6 @@
                 },this);
             }
         } else {
-            console.trace();
             throw new Error(item + ' definition not found: ' + name +'. Did you add it to the BB.' + item + '_definitions object?');
         }
         return instance;
@@ -155,23 +153,29 @@
      */
     BB.create_view = function(view_data,model_data,collection_data){
         var name = view_data.name;
-        var view = this.view_definitions[name];
-        var model = model_data && !(model_data instanceof Backbone.Model) ? this.get_model(model_data) : model_data;
-        var collection = collection_data && !(collection_data instanceof Backbone.Collection) ? this.get_collection(collection_data) : collection_data;
-        view = view ? this.view_instances[name] = new view({model: model,collection: collection}) : '';
+        var definition = this.view_definitions[name];
+        var view;
+        if(definition) {
+            var model = model_data && !(model_data instanceof Backbone.Model) ? this.get_model(model_data) : model_data;
+            var collection = collection_data && !(collection_data instanceof Backbone.Collection) ? this.get_collection(collection_data) : collection_data;
+            view = new definition({model: model,collection: collection});
+            this.view_instances[name] = view;
 
-        if(view_data.options){
-            for(var option in view_data.options){
-                var value = view_data.options[option];
-                view[option] = value;
+            if(view_data.options){
+                for(var option in view_data.options){
+                    view[option] = view_data.options[option];
+                }
             }
+
+            this.view_instances[name].on('remove',function(){
+                delete this.view_instances[name]
+            },this);
+            view.name = name;
+        } else {
+            throw new Error('View definition not found: ' + name +'. Did you add it to the BB.view_definitions object?');
         }
 
-        this.view_instances[name].on('remove',function(){
-            delete this.view_instances[name]
-        },this);
-        view.name = name;
-        return view;
+        return this.view_instances[name];
     };
 
     /**
