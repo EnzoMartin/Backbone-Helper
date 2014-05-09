@@ -1,6 +1,6 @@
 {
     "name" : "backbone-helper",
-    "version" : "1.0.31",
+    "version" : "1.0.40",
     "main" : "backbone-helper.js",
     "dependencies" : {
         "underscore" : ">=1.5.0",
