@@ -8,11 +8,11 @@ module.exports = function (grunt) {
                 files: ['package.json','component.json','bower.json'],
                 commitFiles: ['-a'],
                 commitMessage: 'Release v%VERSION%',
-                pushTo: 'origin',
                 createTag: true,
                 tagName: 'v%VERSION%',
                 tagMessage: 'Version %VERSION%',
-                push: true
+                push: true,
+                pushTo: 'origin/master'
             }
         },
         uglify: {
