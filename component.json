@@ -8,7 +8,6 @@
         "jashkenas/underscore" : "*",
         "jashkenas/backbone" : "*"
     },
-    "main" : "backbone-helper.js",
-    "scripts" : ["backbone-helper.js"],
+    "main" : ["backbone-helper.js","backbone-helper.min.js"],
     "license" : "MIT"
 }
