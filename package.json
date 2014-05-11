@@ -19,7 +19,7 @@
         "jquery": "latest",
         "domino": "latest"
     },
-    "main": "backbone-helper.js",
+    "main" : ["backbone-helper.js","backbone-helper.min.js"],
     "scripts": {
         "test": "node test.js"
     }
