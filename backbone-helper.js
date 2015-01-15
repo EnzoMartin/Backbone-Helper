@@ -14,7 +14,7 @@
     /**
      * @author Enzo Martin <enzo.r.martin@gmail.com>
      * @module backbone/backbone-helper
-     * @desc Backbone Helper functions to manage memory/instances smartly by keeping track of instanciated views/models/collections and making sure you don't have multiple instances of anything in the background by accident
+     * @desc Backbone Helper functions to manage memory/instances by keeping track of instanciated views/models/collections and making sure you don't have multiple instances of anything in the background by accident
      */
 
     BB = {
@@ -164,7 +164,18 @@
         if(definition) {
             var model = model_data && !(model_data instanceof Backbone.Model) ? this.get_model(model_data) : model_data;
             var collection = collection_data && !(collection_data instanceof Backbone.Collection) ? this.get_collection(collection_data) : collection_data;
-            view = new definition({model: model,collection: collection});
+            var data = {
+                model: model,
+                collection: collection
+            };
+            
+            for(var key in view_data){
+                if(key !== 'options'){
+                    data[key] = view_data[key];
+                }
+            }
+            
+            view = new definition(data);
             this.view_instances[name] = view;
 
             if(view_data.options){
