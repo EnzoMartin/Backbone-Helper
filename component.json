@@ -3,7 +3,7 @@
     "version" : "1.0.60",
     "description" : "Handles your view/model/collection instantiations for you",
     "keywords" : ["backbone", "model", "view"],
-    "repo" : "EnzoMartin78/Backbone-Helper",
+    "repo" : "EnzoMartin/Backbone-Helper",
     "dependencies" : {
         "jashkenas/underscore" : "*",
         "jashkenas/backbone" : "*"

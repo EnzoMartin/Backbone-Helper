@@ -6,7 +6,7 @@
     "keywords": ["backbone", "model", "view"],
     "repository": {
         "type": "git",
-        "url": "git@github.com:EnzoMartin78/Backbone-Helper.git"
+        "url": "git@github.com:EnzoMartin/Backbone-Helper.git"
     },
     "author": "Enzo Martin <enzo.r.martin@gmail.com>",
     "dependencies": {
@@ -19,7 +19,7 @@
         "jquery": "latest",
         "domino": "latest"
     },
-    "main" : ["backbone-helper.js","backbone-helper.min.js"],
+    "files" : ["backbone-helper.js","backbone-helper.min.js"],
     "scripts": {
         "test": "node test.js"
     }
